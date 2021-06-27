@@ -1,0 +1,10 @@
+Recomendações tecnicas para a aplicação:
+
+- Break up your GUI into as many nested JPanels as it takes to describe your GUI. A simple nested JPanel that uses a BorderLayout is preferable to a complicated JPanel that uses a GridBagLayout. To be clear, I'm not criticizing a GridBagLayout. It's useful when creating a form. But it's not the only Swing layout manager.
+- Put each nested JPanel into its own class.
+- Use composition when using Swing components. Use inheritance if and only if your class will override one of the JComponent methods.
+- Each JPanel has its own JButton, JLabel, etc. components. JBUtton A is defined for JPanel A, and JButton B is defined for JPanel B, even if the user of the GUI thinks they are the same button. You can minimize the duplication by creating a GUI model that contains the text of the labels and buttons. You must eliminate the duplication of action code (the code that's executed when the button is pressed) by writing common ActionListeners that JButton A and JButton B can execute.
+- A Swing application must start with a call to SwingUtilities.invokelater(). This ensures that the Swing components are defined and used on the Event Dispatch thread (EDT).
+- Only one JFrame is used in a Swing application.
+- Each JPanel must have a Swing layout manager defined.
+- Certain components, like JList and JTable, work better when enclosed in a JScrollPane.
